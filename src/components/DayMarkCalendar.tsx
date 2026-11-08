@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { DAY_MARK_LABEL, setDayMark } from '../domain/conditions';
 import { datesOfMonth, formatDate, WEEKDAY_LABELS, weekdayOf } from '../domain/date';
-import type { DayMark, DayMarkKind, ShiftType, YearMonth } from '../domain/types';
+import type { DayMark, DayMarkKind, ShiftType, YearMonth, FortuneDay, FortunePref } from '../domain/types';
 import { PriorityBadge } from './ui';
 
 type Mode = DayMarkKind | 'clear';
@@ -19,12 +19,18 @@ export function DayMarkCalendar({
   marks,
   shiftTypes,
   onChange,
+  fortunes = [],
+  fortunePrefs = {},
 }: {
   month: YearMonth;
   marks: DayMark[];
   shiftTypes: ShiftType[];
   onChange: (marks: DayMark[]) => void;
+  /** 占いの運気（見ながら休み希望などを決められるように表示する） */
+  fortunes?: FortuneDay[];
+  fortunePrefs?: Record<string, FortunePref>;
 }) {
+  const fortuneByDate = new Map(fortunes.map((f) => [f.date, f.label]));
   const [mode, setMode] = useState<Mode>('off-request');
   const byDate = new Map(marks.map((m) => [m.date, m]));
   const dates = datesOfMonth(month);
@@ -80,9 +86,12 @@ export function DayMarkCalendar({
               type="button"
               className={`mini-cal-day wd-${wd} ${mark ? `mark-${mark.kind}` : ''}`}
               onClick={() => tap(date)}
-              aria-label={`${formatDate(date)} ${mark ? DAY_MARK_LABEL[mark.kind] : '指定なし'}`}
+              aria-label={`${formatDate(date)} ${fortuneByDate.get(date) ? `運気:${fortuneByDate.get(date)} ` : ''}${mark ? DAY_MARK_LABEL[mark.kind] : '指定なし'}`}
             >
               <span className="mini-cal-num">{Number(date.slice(8))}</span>
+              {fortuneByDate.get(date) && (
+                <span className={`fortune-chip pref-${fortunePrefs[fortuneByDate.get(date)!] ?? 0}`}>{fortuneByDate.get(date)}</span>
+              )}
               {mark && <span className="mini-cal-tag">{shortLabel(mark.kind)}</span>}
             </button>
           );
@@ -93,6 +102,13 @@ export function DayMarkCalendar({
         <span className="legend-item"><i className="dot mark-unavailable" />勤務できない <PriorityBadge priority="A" /></span>
         <span className="legend-item"><i className="dot mark-off-request" />休み希望 <PriorityBadge priority="B" /></span>
         <span className="legend-item"><i className="dot mark-work-request" />勤務希望 <PriorityBadge priority="B" /></span>
+        {fortunes.length > 0 && (
+          <span className="legend-item">
+            <span className="fortune-chip pref-1">運気</span>出勤したい
+            <span className="fortune-chip pref--1">運気</span>休みたい
+            <span className="fortune-chip pref-0">運気</span>どちらでも
+          </span>
+        )}
       </div>
 
       {marks.length > 0 && (

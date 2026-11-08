@@ -133,6 +133,12 @@ export function CalendarPage({ month, onGoGenerate }: { month: YearMonth; onGoGe
             <span className="legend-item"><i className="dot mark-off-request" />休み希望</span>
             <span className="legend-item"><i className="dot mark-unavailable" />勤務できない日・予定</span>
             <span className="legend-item">🔒 確定</span>
+            {(view.fortunes?.length ?? 0) > 0 && (
+              <span className="legend-item">
+                <span className="fortune-chip pref-1">🔮運気</span>出勤したい
+                <span className="fortune-chip pref--1">🔮運気</span>休みたい
+              </span>
+            )}
           </div>
           <p className="field-hint">日付をタップすると、その日を編集できます。変更はすぐに自動保存されます。</p>
         </div>

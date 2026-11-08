@@ -300,7 +300,8 @@ export function ConditionsPage({ month, onDirtyChange }: { month: YearMonth; onD
       </div>
 
       <Section title="日付ごとの指定（休み希望・勤務できない日・勤務希望）" icon="📌">
-        <DayMarkCalendar month={month} marks={draft.dayMarks} shiftTypes={draft.shiftTypes} onChange={(v) => patch({ dayMarks: v })} />
+        <DayMarkCalendar month={month} marks={draft.dayMarks} shiftTypes={draft.shiftTypes} onChange={(v) => patch({ dayMarks: v })} fortunes={draft.fortunes} fortunePrefs={draft.fortunePrefs} />
+        {(draft.fortunes?.length ?? 0) > 0 && <p className="field-hint">🔮 日付の下の文字は占いの運気です。見ながら休み希望・勤務希望を決められます（運気ごとの希望は下の「占いの運気」で設定）。</p>}
         {fieldIssues('dayMarks')}
       </Section>
 

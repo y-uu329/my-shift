@@ -290,7 +290,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
 .mode-btn.active.mode-work-request { border-color: var(--want); background: var(--want-soft); }
 .mode-btn.active.mode-clear { border-color: var(--muted); background: var(--surface-2); }
 
-.mini-cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-top: 12px; }
+.mini-cal { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; margin-top: 12px; }
 .mini-cal-head { text-align: center; font-weight: 700; font-size: 0.9rem; }
 .mini-cal-day {
   aspect-ratio: 1 / 0.85;
@@ -768,11 +768,33 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
 .fortune-days { margin-top: 12px; }
 .fortune-days summary { cursor: pointer; min-height: 36px; font-weight: 600; }
 .fortune-days ul { columns: 2; padding-left: 1.2em; margin: 8px 0; }
-.shift-cell-fortune { font-size: 0.66rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--muted); }
-.shift-cell-fortune.pref-1 { color: var(--off); font-weight: 700; }
-.shift-cell-fortune.pref--1 { color: var(--ng); font-weight: 700; }
+/* 運気のしるし（出勤したい＝緑、休みたい＝赤、どちらでも＝灰） */
+.fortune-chip {
+  display: inline-block;
+  max-width: 100%;
+  padding: 0 6px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1.6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: var(--surface-2);
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+.fortune-chip.pref-1 { background: var(--off-soft); color: var(--off); border-color: color-mix(in srgb, var(--off) 40%, transparent); }
+.fortune-chip.pref--1 { background: var(--ng-soft); color: var(--ng); border-color: color-mix(in srgb, var(--ng) 40%, transparent); }
+.shift-cell-fortune { align-self: flex-start; }
+.mini-cal-day { min-width: 0; overflow: hidden; }
+.mini-cal-day .fortune-chip { font-size: 0.66rem; margin-top: 1px; }
+.legend-item .fortune-chip { margin-left: 6px; max-width: none; overflow: visible; }
+.day-editor-fortune { margin: 0; padding: 8px 12px; border-radius: 10px; background: var(--surface-2); }
+.day-editor-fortune.pref-1 { background: var(--off-soft); }
+.day-editor-fortune.pref--1 { background: var(--ng-soft); }
 @media (max-width: 760px) {
-  .shift-cell-fortune { font-size: 0.56rem; }
+  .fortune-chip { font-size: 0.56rem; padding: 0 3px; }
 }
 
 /* ---------- バックアップ ---------- */
@@ -831,4 +853,10 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
   .pay-list tfoot td:empty { display: none; }
   .pay-list tr.is-current { background: var(--primary-soft); border-radius: 12px; }
   .pay-list tr.is-current td { background: transparent; }
+}
+
+/* 運気を表示する日付カレンダー（スマホ）：文字が切れないようにマスを高くする */
+@media (max-width: 760px) {
+  .mini-cal-day { aspect-ratio: auto; min-height: 64px; padding: 4px 2px; justify-content: flex-start; gap: 2px; }
+  .mini-cal-day .fortune-chip { font-size: 0.58rem; padding: 0 2px; line-height: 1.5; }
 }

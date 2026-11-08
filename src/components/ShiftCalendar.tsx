@@ -73,7 +73,7 @@ export function ShiftCalendar({
             </span>
             {holiday && <span className="shift-cell-holiday">{holiday}</span>}
             {fortunes.get(date) && (
-              <span className={`shift-cell-fortune pref-${conditions.fortunePrefs?.[fortunes.get(date)!] ?? 0}`}>🔮{fortunes.get(date)}</span>
+              <span className={`fortune-chip shift-cell-fortune pref-${conditions.fortunePrefs?.[fortunes.get(date)!] ?? 0}`}>🔮{fortunes.get(date)}</span>
             )}
             {large && mark?.note && <span className="shift-cell-note">📝 {mark.note}</span>}
             {d?.work ? (

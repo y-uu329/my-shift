@@ -37,6 +37,8 @@ export function DayEditor({
   }, [day.date, day.start, day.end, conditions.shiftTypes]);
 
   const mark = conditions.dayMarks.find((m) => m.date === day.date);
+  const fortune = conditions.fortunes?.find((f) => f.date === day.date)?.label;
+  const fortunePref = fortune ? (conditions.fortunePrefs?.[fortune] ?? 0) : 0;
   const holiday = holidayName(day.date);
   const warnings: string[] = [];
   if (day.work) {
@@ -72,6 +74,12 @@ export function DayEditor({
         </button>
       </div>
 
+      {fortune && (
+        <p className={`day-editor-fortune pref-${fortunePref}`}>
+          🔮 運気：<strong>{fortune}</strong>
+          <span className="muted">（{fortunePref > 0 ? '出勤したい運気' : fortunePref < 0 ? '休みたい運気' : '希望は未設定'}）</span>
+        </p>
+      )}
       {mark && (
         <p className={`mark-chip mark-${mark.kind} day-editor-mark`}>
           {DAY_MARK_LABEL[mark.kind]}
