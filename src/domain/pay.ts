@@ -12,6 +12,8 @@ export interface PaySettings {
   /** 時給（円） */
   hourlyWage: number;
   breakRules: BreakRule[];
+  /** 給料の締め日（1〜28日。0 は末日締め） */
+  closingDay?: number;
 }
 
 /** 初期値：時給1540円・6時間を超えたら60分・8時間を超えたら90分（6時間以下は休憩なし） */
@@ -21,6 +23,7 @@ export const DEFAULT_PAY: PaySettings = {
     { overHours: 8, minutes: 90 },
     { overHours: 6, minutes: 60 },
   ],
+  closingDay: 0,
 };
 
 /** 開始〜終了の長さ（時間）から、休憩（分）を決める */

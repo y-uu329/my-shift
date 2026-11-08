@@ -6,16 +6,18 @@ import { ConditionsPage } from './pages/ConditionsPage';
 import { GeneratePage } from './pages/GeneratePage';
 import { HistoryPage } from './pages/HistoryPage';
 import { ImportPage } from './pages/ImportPage';
+import { PayPage } from './pages/PayPage';
 import { SettingsPage } from './pages/SettingsPage';
 import { isPersistent, onPersistenceChange } from './storage/repository';
 
-type Tab = 'conditions' | 'import' | 'calendar' | 'generate' | 'history' | 'settings';
+type Tab = 'conditions' | 'import' | 'calendar' | 'generate' | 'pay' | 'history' | 'settings';
 
 const TABS: { id: Tab; label: string; icon: string; ready: boolean }[] = [
   { id: 'conditions', label: '勤務条件', icon: '📝', ready: true },
   { id: 'import', label: '取り込み', icon: '📷', ready: true },
   { id: 'generate', label: 'シフト作成', icon: '✨', ready: true },
   { id: 'calendar', label: 'カレンダー', icon: '📅', ready: true },
+  { id: 'pay', label: '給料', icon: '💴', ready: true },
   { id: 'history', label: '履歴・出力', icon: '📤', ready: true },
 ];
 
@@ -99,6 +101,15 @@ export function App() {
           <ImportPage month={month} onGoSettings={() => setTab('settings')} onGoConditions={() => setTab('conditions')} onGoCalendar={() => setTab('calendar')} />
         )}
         {tab === 'settings' && <SettingsPage />}
+        {tab === 'pay' && (
+          <PayPage
+            onGoSettings={() => setTab('settings')}
+            onGoCalendar={(m) => {
+              setMonth(m);
+              setTab('calendar');
+            }}
+          />
+        )}
         {tab === 'history' && <HistoryPage month={month} onSelectMonth={setMonth} onGoCalendar={() => setTab('calendar')} />}
       </main>
       <ConfirmHost />

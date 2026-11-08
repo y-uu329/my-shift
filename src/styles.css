@@ -786,3 +786,49 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
 .first-steps li { counter-increment: step; display: grid; grid-template-columns: 32px 1fr; gap: 10px; align-items: start; }
 .first-steps li::before { content: counter(step); display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--primary-soft); color: var(--primary); font-weight: 800; }
 .first-steps small { display: block; color: var(--muted); }
+
+/* =============================================
+   給料のページ
+   ============================================= */
+.pay-rule { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.pay-rule select { min-width: 9em; }
+.period-range { margin: -4px 0 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.pay-summary { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin: 0 0 12px; }
+.pay-summary > div { padding: 12px 14px; border-radius: 12px; background: var(--surface-2); }
+.pay-summary dt { font-size: 0.8rem; color: var(--muted); }
+.pay-summary dd { margin: 2px 0 0; font-size: 1.15rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.pay-summary .pay-total { color: var(--primary); }
+.pay-days { margin-top: 12px; }
+.pay-days summary { cursor: pointer; min-height: 36px; font-weight: 600; }
+.pay-table .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.pay-table td { vertical-align: middle; }
+.pay-list .is-current td { background: var(--primary-soft); }
+.pay-list .version-badge { margin-left: 6px; }
+.pay-cell { font-weight: 700; }
+.pay-cell small { display: block; font-weight: 400; }
+.diff-up { color: var(--off); }
+.diff-down { color: var(--ng); }
+.missing-mark { margin-left: 4px; }
+.pay-list tfoot td { border-bottom: 0; font-weight: 600; }
+
+@media (max-width: 760px) {
+  .pay-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pay-summary > div:first-child { grid-column: 1 / -1; }
+  .tab { font-size: 0.66rem; }
+  /* 一覧をカード型に */
+  .pay-list thead { display: none; }
+  .pay-list, .pay-list tbody, .pay-list tfoot { display: block; }
+  .pay-list tr { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 10px 8px; border-bottom: 1px solid var(--border); }
+  .pay-list td { border: 0; padding: 0; }
+  .pay-list td[data-label='〇月分'] { grid-column: 1; }
+  .pay-list td[data-label='見込み給料'] { grid-column: 2; grid-row: 1; font-size: 1.05rem; }
+  .pay-list td[data-label='期間'] { grid-column: 1 / -1; font-size: 0.85rem; }
+  .pay-list td[data-label='出勤'], .pay-list td[data-label='実働'] { text-align: left; font-size: 0.85rem; display: inline; }
+  .pay-list td[data-label='出勤']::before { content: '出勤 '; color: var(--muted); }
+  .pay-list td[data-label='実働']::before { content: '実働 '; color: var(--muted); }
+  .pay-list td[data-label='前の期間との差'] { grid-column: 2; font-size: 0.85rem; }
+  .pay-list tfoot tr { grid-template-columns: 1fr auto; }
+  .pay-list tfoot td:empty { display: none; }
+  .pay-list tr.is-current { background: var(--primary-soft); border-radius: 12px; }
+  .pay-list tr.is-current td { background: transparent; }
+}
