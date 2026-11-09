@@ -34,8 +34,8 @@ export const DAY_MARK_LABEL: Record<DayMarkKind, string> = {
 };
 
 export const DEFAULT_SHIFT_TYPES: ShiftType[] = [
-  { id: 'early', name: '早番', start: '09:00', end: '17:00', color: '#f59e0b' },
-  { id: 'late', name: '遅番', start: '13:00', end: '21:00', color: '#6366f1' },
+  { id: 'early', name: '早番', start: '09:00', end: '17:00', color: '#f0b44c' },
+  { id: 'late', name: '遅番', start: '13:00', end: '21:00', color: '#4fb3cf' },
 ];
 
 export function createDefaultConditions(month: YearMonth): MonthConditions {

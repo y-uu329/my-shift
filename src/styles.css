@@ -2,75 +2,99 @@
    デザインの設定（色・文字サイズなど）
    iPad を基準に、スマートフォンでも見やすいようにしています
    ============================================= */
+/* レイアウト：クリーム色の地に、ミント・水色のふんわりした形と黄色のきらきら。部品は丸く、やわらかく */
 :root {
-  --bg: #f4f6fb;
-  --surface: #ffffff;
-  --surface-2: #f0f2f8;
-  --text: #1d2433;
-  --muted: #667085;
-  --border: #e2e6ef;
-  --primary: #4f6df5;
-  --primary-soft: #e6ebff;
-  --sun: #e5484d;
-  --sat: #3b82f6;
-  --off: #10b981;
-  --off-soft: #d9f7ec;
-  --ng: #e5484d;
-  --ng-soft: #fde4e4;
-  --want: #f59e0b;
-  --want-soft: #fff1d6;
-  --badge-a: #b42318;
-  --badge-a-bg: #fee4e2;
-  --badge-b: #b54708;
-  --badge-b-bg: #fef0c7;
-  --badge-c: #175cd3;
-  --badge-c-bg: #d1e9ff;
-  --radius: 16px;
-  --shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 4px 16px rgba(16, 24, 40, 0.05);
+  --bg: #fbf8ec;
+  --surface: #fffefa;
+  --surface-2: #eef7f4;
+  --text: #2c4650;
+  --muted: #6f8a91;
+  --border: #d6ebe6;
+  --primary: #1f8ea1;
+  --primary-soft: #dcf2f2;
+  --on-primary: #ffffff;
+  --accent: #f3cf5c;
+  --mint: #9fdccf;
+  --aqua: #8fd0e3;
+  --sun: #d9646a;
+  --sat: #3a8fca;
+  --off: #23987f;
+  --off-soft: #d9f3ea;
+  --ng: #d9646a;
+  --ng-soft: #fbe3e1;
+  --want: #c98a1c;
+  --want-soft: #fdf0cf;
+  --badge-a: #b8434a;
+  --badge-a-bg: #fbe3e1;
+  --badge-b: #9a6512;
+  --badge-b-bg: #fdf0cf;
+  --badge-c: #1f6f93;
+  --badge-c-bg: #d9eff8;
+  --radius: 24px;
+  --shadow: 0 2px 4px rgba(31, 142, 161, 0.06), 0 10px 24px rgba(31, 142, 161, 0.08);
+  --font: 'Hiragino Maru Gothic ProN', 'Zen Maru Gothic', 'M PLUS Rounded 1c', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
   color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --bg: #12151c;
-    --surface: #1b1f29;
-    --surface-2: #242a36;
-    --text: #eef1f7;
-    --muted: #9aa3b5;
-    --border: #2f3644;
-    --primary: #7b93ff;
-    --primary-soft: #26305a;
-    --off-soft: #11392d;
-    --ng-soft: #4a1d20;
-    --want-soft: #45320f;
+    --bg: #0f2228;
+    --surface: #162f37;
+    --surface-2: #1c3a43;
+    --text: #e4f3f1;
+    --muted: #9cbcbf;
+    --border: #2a4c55;
+    --primary: #6fd2dc;
+    --primary-soft: #1d4650;
+    --on-primary: #0b2a30;
+    --accent: #e8c45a;
+    --mint: #2f6b62;
+    --aqua: #2a5f70;
+    --sun: #f08f93;
+    --sat: #7cbcec;
+    --off: #6fd6bb;
+    --off-soft: #1b4239;
+    --ng: #f08f93;
+    --ng-soft: #4a2427;
+    --want: #f0c062;
+    --want-soft: #45360f;
     --badge-a: #ffb4ab;
-    --badge-a-bg: #4a1d20;
+    --badge-a-bg: #4a2427;
     --badge-b: #fedf89;
-    --badge-b-bg: #45320f;
+    --badge-b-bg: #45360f;
     --badge-c: #b2ddff;
-    --badge-c-bg: #102a4c;
+    --badge-c-bg: #133548;
     --shadow: none;
     color-scheme: dark;
   }
 }
 :root[data-theme='dark'] {
-  --bg: #12151c;
-  --surface: #1b1f29;
-  --surface-2: #242a36;
-  --text: #eef1f7;
-  --muted: #9aa3b5;
-  --border: #2f3644;
-  --primary: #7b93ff;
-  --primary-soft: #26305a;
-  --off-soft: #11392d;
-  --ng-soft: #4a1d20;
-  --want-soft: #45320f;
+  --bg: #0f2228;
+  --surface: #162f37;
+  --surface-2: #1c3a43;
+  --text: #e4f3f1;
+  --muted: #9cbcbf;
+  --border: #2a4c55;
+  --primary: #6fd2dc;
+  --primary-soft: #1d4650;
+  --on-primary: #0b2a30;
+  --accent: #e8c45a;
+  --mint: #2f6b62;
+  --aqua: #2a5f70;
+  --sun: #f08f93;
+  --sat: #7cbcec;
+  --off: #6fd6bb;
+  --off-soft: #1b4239;
+  --ng: #f08f93;
+  --ng-soft: #4a2427;
+  --want: #f0c062;
+  --want-soft: #45360f;
   --badge-a: #ffb4ab;
-  --badge-a-bg: #4a1d20;
+  --badge-a-bg: #4a2427;
   --badge-b: #fedf89;
-  --badge-b-bg: #45320f;
+  --badge-b-bg: #45360f;
   --badge-c: #b2ddff;
-  --badge-c-bg: #102a4c;
+  --badge-c-bg: #133548;
   --shadow: none;
   color-scheme: dark;
 }
@@ -83,7 +107,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Noto Sans JP', 'Segoe UI', sans-serif;
+  font-family: var(--font);
   font-size: 17px;
   line-height: 1.6;
 }
@@ -143,7 +167,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
   font-weight: 600;
   cursor: pointer;
 }
-.tab.active { background: var(--primary); color: #fff; }
+.tab.active { background: var(--primary); color: var(--on-primary); }
 .soon { display: inline-block; margin-left: 4px; font-size: 0.7rem; opacity: 0.7; }
 
 /* ---------- カード ---------- */
@@ -173,7 +197,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
   font-weight: 600;
   cursor: pointer;
 }
-.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary { background: var(--primary); color: var(--on-primary); }
 .btn-primary:disabled { opacity: 0.45; cursor: not-allowed; }
 .btn-ghost { background: var(--surface); border-color: var(--border); }
 .icon-btn {
@@ -634,7 +658,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
 .version { padding: 12px 14px; border-radius: 12px; background: var(--surface-2); }
 .version.current { margin-bottom: 12px; background: var(--primary-soft); }
 .version-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
-.version-badge { font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--primary); color: #fff; }
+.version-badge { font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--primary); color: var(--on-primary); }
 .version-actions { margin-left: auto; display: flex; gap: 8px; }
 .version-preview { margin-top: 12px; }
 
@@ -859,4 +883,115 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
 @media (max-width: 760px) {
   .mini-cal-day { aspect-ratio: auto; min-height: 64px; padding: 4px 2px; justify-content: flex-start; gap: 2px; }
   .mini-cal-day .fortune-chip { font-size: 0.58rem; padding: 0 2px; line-height: 1.5; }
+}
+
+/* =============================================
+   パステルのデザイン（やわらかい形・きらきら）
+   ============================================= */
+body {
+  background-color: var(--bg);
+  /* 四すみにミント・水色・黄色のふんわりした丸 */
+  background-image:
+    radial-gradient(circle at 0% 0%, color-mix(in srgb, var(--mint) 70%, transparent) 0, transparent 230px),
+    radial-gradient(circle at 100% 6%, color-mix(in srgb, var(--aqua) 55%, transparent) 0, transparent 210px),
+    radial-gradient(circle at 96% 100%, color-mix(in srgb, var(--mint) 60%, transparent) 0, transparent 260px),
+    radial-gradient(circle at 4% 92%, color-mix(in srgb, var(--accent) 35%, transparent) 0, transparent 180px);
+  background-attachment: fixed;
+  letter-spacing: 0.02em;
+}
+
+/* タイトル：丸い太文字と、黄色のきらきら */
+.app-title {
+  position: relative;
+  white-space: nowrap;
+  color: var(--primary);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 0 14px;
+}
+.app-title::before,
+.app-title::after {
+  content: '✦';
+  position: absolute;
+  color: var(--accent);
+  font-size: 0.7em;
+}
+.app-title::before { left: -2px; top: -6px; }
+.app-title::after { right: -4px; bottom: -4px; font-size: 0.55em; }
+.month-label { color: var(--text); }
+
+/* タブ：まるいピル型 */
+.tabs {
+  border-radius: 999px;
+  padding: 6px;
+  border: 1.5px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.tab { border-radius: 999px; color: var(--text); }
+.tab.active {
+  background: linear-gradient(135deg, var(--primary), color-mix(in srgb, var(--primary) 70%, var(--mint)));
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+/* カード：大きめの角丸、うすいミントのふち */
+.card {
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 94%, transparent);
+}
+.card-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+/* 見出しの下に、リボンのような水色の帯 */
+.card-title::after {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 6px;
+  margin-left: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--aqua), var(--mint));
+}
+
+/* ボタン：まるく、押しやすく */
+.btn { border-radius: 999px; letter-spacing: 0.04em; }
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), color-mix(in srgb, var(--primary) 72%, var(--mint)));
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--primary) 28%, transparent);
+}
+.btn-primary:disabled { box-shadow: none; }
+.btn-ghost { background: var(--surface); border: 1.5px solid var(--border); }
+.stepper-btn, .weekday-btn, .mode-btn, .choice, .kind-card, .pattern-card, .model-option, .month-chip { border-radius: 18px; }
+.stepper-btn { background: var(--primary-soft); color: var(--primary); border-color: transparent; font-weight: 800; }
+input[type='text'], input[type='number'], input[type='time'], input[type='date'], input[type='password'], select, textarea { border-radius: 14px; border-width: 1.5px; }
+
+/* 小さな部品 */
+.chip { border: 1.5px solid var(--border); box-shadow: none; }
+.badge { border-radius: 999px; }
+.segmented { border-radius: 999px; }
+.segmented button { border-radius: 999px; }
+.save-bar, .dialog, .day-editor { border-radius: 24px; border-width: 1.5px; }
+.empty h2 { color: var(--primary); }
+.first-steps li::before { background: linear-gradient(135deg, var(--aqua), var(--mint)); color: var(--on-primary); }
+.notice { border-radius: 18px; background: var(--primary-soft); }
+.pattern-score, .eval-summary strong, .pay-summary .pay-total { color: var(--primary); }
+
+/* カレンダーのマス：やわらかい角 */
+.shift-cell, .mini-cal-day { border-radius: 14px; }
+.shift-cell.is-off { background: color-mix(in srgb, var(--surface-2) 80%, var(--surface)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .tab.active, .btn-primary { box-shadow: none; }
+}
+
+@media (max-width: 760px) {
+  .app-title { letter-spacing: 0.02em; padding: 0 10px; font-size: 1.1rem; }
+  .card-title::after { width: 20px; }
 }

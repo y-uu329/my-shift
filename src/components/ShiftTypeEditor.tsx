@@ -2,7 +2,7 @@
 import { newShiftTypeId, shiftHours } from '../domain/conditions';
 import type { ShiftType } from '../domain/types';
 
-const COLORS = ['#f59e0b', '#6366f1', '#10b981', '#ec4899', '#0ea5e9', '#8b5cf6'];
+const COLORS = ['#f0b44c', '#4fb3cf', '#5cc4a6', '#ef8fa8', '#9d8fe0', '#f3cf5c'];
 
 export function ShiftTypeEditor({ value, onChange }: { value: ShiftType[]; onChange: (v: ShiftType[]) => void }) {
   const update = (id: string, patch: Partial<ShiftType>) => onChange(value.map((s) => (s.id === id ? { ...s, ...patch } : s)));
